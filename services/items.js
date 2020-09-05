@@ -1,7 +1,9 @@
 /* Items API */
 
+const { searchItems } = require('../lib/meli');
+
 const getItems = async ({ query }) => {
-  const items = await Promise.resolve({ query });
+  const items = await searchItems(query);
   return items || {};
 };
 
