@@ -10,7 +10,8 @@ const getCategory = (filters) => {
 };
 
 const getPrice = (price) => {
-  return price.toString().split('.');
+  const [amount, decimals] = price.toString().split('.');
+  return [parseInt(amount), parseInt(decimals)];
 };
 
 module.exports = {
