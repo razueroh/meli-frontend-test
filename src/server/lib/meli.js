@@ -16,7 +16,7 @@ const jsonSign = {
 
 const searchItems = async (query) => {
   const { data } = await http.get(
-    `sites/MLA/search?q=${query}&limit=${config.meliSearchLimit}`
+    `sites/MLA/search?q=${query}&limit=${config.meliSearchLimit}`,
   );
   const { results, available_filters: filters } = data;
 

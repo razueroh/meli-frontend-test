@@ -1,6 +1,6 @@
 const getCategory = (filters) => {
   const categoryFilters = (filters || []).filter(
-    ({ id }) => id === 'category'
+    ({ id }) => id === 'category',
   )[0];
   const categories = categoryFilters
     ? categoryFilters.values.sort((a, b) => (a.results < b.results ? 1 : -1))
@@ -11,7 +11,7 @@ const getCategory = (filters) => {
 
 const getPrice = (price) => {
   const [amount, decimals] = price.toString().split('.');
-  return [parseInt(amount), parseInt(decimals)];
+  return [parseInt(amount, 10), parseInt(decimals, 10)];
 };
 
 module.exports = {
