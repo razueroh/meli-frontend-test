@@ -46,6 +46,10 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    historyApiFallback: true,
+  },
+  devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',

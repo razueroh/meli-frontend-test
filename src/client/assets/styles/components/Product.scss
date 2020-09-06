@@ -1,0 +1,73 @@
+@import '../Vars.scss';
+
+.product {
+  background-color: $white;
+  border-radius: $border-radius;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 1rem;
+  grid-template-areas:
+    'picture      details'
+    'description  details';
+  margin-bottom: 100px;
+  padding: $padding-32;
+}
+.product-description {
+  grid-area: description;
+  grid-column: 1 / span 7;
+  white-space: pre-wrap;
+}
+.product-description__header {
+  font-size: $font-size-28;
+  margin: 0;
+}
+.product-description__paragraph {
+  color: $gray;
+  font-size: $font-size-16;
+  margin: $margin-32 0;
+}
+.product-details {
+  grid-area: details;
+  grid-column: 8 / span 3;
+}
+.product__buy {
+  background-color: $blue;
+  border-radius: $border-radius;
+  color: $white;
+  font-size: $font-size-18;
+  height: 50px;
+  width: 100%;
+}
+.product__condition {
+  font-size: $font-size-14;
+}
+.product__condition::after {
+  content: ' – ';
+}
+
+.product__sold-quantity {
+  font-size: $font-size-14;
+}
+
+.product__picture {
+  grid-area: picture;
+  grid-column: 1 / span 7;
+  height: 680px;
+  width: 680px;
+}
+.product__price {
+  font-size: $font-size-46;
+  margin: $margin-32 0;
+}
+
+.product__price-currency {
+  margin-right: 0.2em;
+}
+.product__price-decimals {
+  font-size: $font-size-24;
+}
+
+.product__title {
+  font-size: $font-size-24;
+  margin-top: $margin-16;
+}

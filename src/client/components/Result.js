@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import freeShippingIcon from '../assets/static/shipping-icon.png';
 import '../assets/styles/components/Result.scss';
@@ -16,9 +17,9 @@ const Result = ({
 }) => {
   return (
     <article className='result'>
-      <a href='/#' className='result__image-link'>
+      <Link to={`/items/${id}`} className='result__image-link'>
         <img src={image} alt={title} className='result__thumbnail' />
-      </a>
+      </Link>
       <div className='result-details__wrapper'>
         <div className='result__price'>
           <span className='result__price-currency'>{currency}</span>
@@ -31,9 +32,9 @@ const Result = ({
             />
           )}
         </div>
-        <a href='/#' className='result__description-link'>
+        <Link to={`/items/${id}`} className='result__description-link'>
           <div className='result__description'>{title}</div>
-        </a>
+        </Link>
         <div className='result__condition'>{condition}</div>
       </div>
       <div className='result__location'>{location}</div>
@@ -45,7 +46,7 @@ Result.propTypes = {
   id: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   condition: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,

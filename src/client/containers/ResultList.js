@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Result from '../components/Result';
 import '../assets/styles/containers/ResultList.scss';
 import { getCurrency, formatAmount } from '../utils/price';
+import getCondition from '../utils/condition';
 
 const ResultList = ({ results }) => {
   return (
@@ -27,7 +28,7 @@ const ResultList = ({ results }) => {
             currency={getCurrency(price.currency)}
             value={formatAmount(price.amount)}
             title={title}
-            condition={condition === 'new' ? 'Nuevo' : 'Usado'}
+            condition={getCondition(condition)}
             location={location}
             isFreeShipping={isFreeShipping}
           />

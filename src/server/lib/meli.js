@@ -15,11 +15,8 @@ const jsonSign = {
 };
 
 const searchItems = async (query) => {
-  console.log('query', query);
   const { data } = await http.get(
-    `sites/MLA/search?q=${encodeURIComponent(query)}&limit=${
-      config.meliSearchLimit
-    }`,
+    `sites/MLA/search?q=${encodeURIComponent(query)}&limit=${config.meliSearchLimit}`,
   );
   const { results, filters } = data;
 
@@ -60,12 +57,14 @@ const getItemData = async (id) => {
   return {
     ...jsonSign,
     item: {
+      id: item.id,
+      title: item.title,
       price: {
         currency: item.currency_id,
         amount,
         decimals,
       },
-      picture: item.thumbnail,
+      picture: item.thumbnail.replace(/-I/, '-L'),
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
       sold_quantity: item.sold_quantity,
