@@ -1,12 +1,11 @@
 const getCategory = (filters) => {
-  const categoryFilters = (filters || []).filter(
-    ({ id }) => id === 'category',
-  )[0];
-  const categories = categoryFilters
-    ? categoryFilters.values.sort((a, b) => (a.results < b.results ? 1 : -1))
-    : [];
+  const category = (filters || []).filter(({ id }) => id === 'category')[0];
+  const categories =
+    category && category.values
+      ? category.values[0].path_from_root.map((step) => step.name)
+      : [];
 
-  return [categories[0]] || [];
+  return categories;
 };
 
 const getPrice = (price) => {

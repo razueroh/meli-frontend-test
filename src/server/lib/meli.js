@@ -15,10 +15,13 @@ const jsonSign = {
 };
 
 const searchItems = async (query) => {
+  console.log('query', query);
   const { data } = await http.get(
-    `sites/MLA/search?q=${query}&limit=${config.meliSearchLimit}`,
+    `sites/MLA/search?q=${encodeURIComponent(query)}&limit=${
+      config.meliSearchLimit
+    }`,
   );
-  const { results, available_filters: filters } = data;
+  const { results, filters } = data;
 
   const category = getCategory(filters);
 
@@ -35,13 +38,14 @@ const searchItems = async (query) => {
       picture: item.thumbnail,
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
+      location: item.address.state_name,
     };
   });
 
   return {
     ...jsonSign,
     categories: category,
-    ...items,
+    items,
   };
 };
 

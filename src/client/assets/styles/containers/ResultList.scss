@@ -1,0 +1,9 @@
+@import '../Vars.scss';
+
+.results {
+  background-color: $white;
+  border-radius: $border-radius;
+  height: fit-content;
+  padding: 0 16px;
+  margin-bottom: 100px;
+}

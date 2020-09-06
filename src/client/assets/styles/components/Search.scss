@@ -1,0 +1,46 @@
+@import '../Vars.scss';
+
+$search-icon: '../../static/search-icon.png';
+
+.search-box {
+  width: 100%;
+  height: 100%;
+}
+
+.search-box__logo {
+  height: 36px;
+  margin-right: 24px;
+  justify-self: center;
+}
+
+.search-box__form {
+  height: 100%;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search-box__input {
+  width: 100%;
+  font-size: 18px;
+  height: 36px;
+  padding: 8px 16px;
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+}
+
+.search-box__input::placeholder {
+  color: $gray;
+}
+
+.search-box__button {
+  background-image: url($search-icon);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: center;
+  height: 36px;
+  width: 36px;
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}

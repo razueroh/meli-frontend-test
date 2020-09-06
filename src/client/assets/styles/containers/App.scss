@@ -1,0 +1,54 @@
+@import '../Vars.scss';
+
+/* reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $theme-font;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main';
+  grid-template-rows: 56px auto;
+  height: 100vh;
+  color: $font-color;
+  background-color: $light-gray;
+}
+
+input,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Layout */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 1rem;
+}
+
+@for $i from 1 through 10 {
+  .width-#{$i} {
+    grid-column-end: span $i;
+  }
+
+  .pos-#{$i} {
+    grid-column-start: $i;
+  }
+}

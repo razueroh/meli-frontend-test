@@ -1,0 +1,23 @@
+@import '../Vars.scss';
+
+.breadcrumb {
+  color: $gray;
+  font-size: $font-size-14;
+  line-height: 1em;
+  padding: $padding-16 0;
+}
+
+.breadcrumb__category {
+  font-weight: 300;
+}
+
+.breadcrumb__category:last-child {
+  font-weight: bold;
+}
+
+.breadcrumb__category:not(:last-child)::after {
+  content: ' 〉 ';
+  font-size: 0.8em;
+  margin-left: 8px;
+  font-weight: 400;
+}
