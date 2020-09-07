@@ -13,7 +13,7 @@ const Breadcrumb = ({ categories }) => (
   </div>
 );
 
-Breadcrumb.defaulProps = {
+Breadcrumb.defaultProps = {
   categories: [],
 };
 
