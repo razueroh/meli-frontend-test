@@ -45,11 +45,7 @@ const App = () => {
   return (
     <>
       <Header>
-        <Search
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
-          onSubmit={onSubmit}
-        />
+        <Search value={value} onChange={(event) => setValue(event.target.value)} onSubmit={onSubmit} />
       </Header>
       <Main>
         <Breadcrumb categories={searchResults.categories} />
