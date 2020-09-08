@@ -41,6 +41,8 @@ a {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: 1rem;
+  max-width: 1220px;
+  margin: auto;
 }
 
 @for $i from 1 through 10 {

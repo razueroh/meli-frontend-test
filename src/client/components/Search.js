@@ -5,31 +5,24 @@ import '../assets/styles/components/Search.scss';
 import logo from '../assets/static/logo-ml.png';
 
 const Search = ({ value, onSubmit, onChange }) => (
-  <div className='search-box pos-2 width-10'>
+  <div className='search-box grid'>
     <form
       onSubmit={(event) => {
         event.preventDefault();
         onSubmit();
       }}
-      className='search-box__form'
+      className='search-box__form pos-2 width-10'
     >
-      <img
-        src={logo}
-        alt='Logo de Mercado Libre'
-        className='search-box__logo'
-      />
+      <img src={logo} alt='Logo de Mercado Libre' className='search-box__logo' />
       <input
+        aria-label='Buscar'
         type='text'
         className='search-box__input'
         placeholder='Nunca dejes de buscar'
         value={value}
         onChange={onChange}
       />
-      <button
-        type='submit'
-        aria-label='Search'
-        className='search-box__button'
-      />
+      <button type='submit' aria-label='Buscar' className='search-box__button' />
     </form>
   </div>
 );

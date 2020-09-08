@@ -7,15 +7,18 @@ const { FIVE_MINUTES_IN_SECONDS } = require('../utils/time');
 const routes = require('../../client/routes/serverRoutes').default;
 
 const setResponse = (html, manifest) => {
+  const favicon = manifest ? manifest['assets/logo-ml.png'] : 'assets/logo-ml.png';
   const mainStyles = manifest ? manifest['main.css'] : '/assets/app.css';
   const mainBuild = manifest ? manifest['main.js'] : '/assets/app.js';
   const vendorsBuild = manifest ? manifest['vendors.js'] : '/assets/vendors.js';
 
   return `<!DOCTYPE html>
-  <html lang="en">
+  <html lang="es">
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="La comunidad de compra y venta online más grande de América Latina." data-head-react="true"/>
+      <link rel="icon" type="image/png" href="${favicon}">
       <link rel="stylesheet" href="${mainStyles}" type="text/css">
       <title>Mercado Libre Test</title>
     </head>
