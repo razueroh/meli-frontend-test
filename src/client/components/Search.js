@@ -15,13 +15,14 @@ const Search = ({ value, onSubmit, onChange }) => (
     >
       <img src={logo} alt='Logo de Mercado Libre' className='search-box__logo' />
       <input
+        aria-label='Buscar'
         type='text'
         className='search-box__input'
         placeholder='Nunca dejes de buscar'
         value={value}
         onChange={onChange}
       />
-      <button type='submit' aria-label='Search' className='search-box__button' />
+      <button type='submit' aria-label='Buscar' className='search-box__button' />
     </form>
   </div>
 );
