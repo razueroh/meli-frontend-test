@@ -12,7 +12,7 @@ const component = {
   success: (product) => <Product product={product} />,
 };
 
-const getState = (state, data) => component[state](data);
+const getState = ({ state, data }) => component[state](data);
 
 const Details = () => {
   const { id } = useParams();
@@ -45,9 +45,7 @@ const Details = () => {
     getProductDetails(id);
   }, []);
 
-  const { state, data } = currentState;
-
-  return getState(state, data);
+  return getState({ currentState });
 };
 
 export default Details;

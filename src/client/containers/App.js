@@ -10,26 +10,36 @@ import '../assets/styles/containers/App.scss';
 import { getItems } from '../api/meli';
 import Message from '../components/Message';
 
-const initialState = {
-  categories: [],
-  items: [],
+const component = {
+  loading: () => <h1>loading</h1>,
+  error: (error) => <Message error={error} />,
+  success: (results) => <ResultList results={results} />,
 };
+
+const getState = ({ state, data }) => component[state](data);
 
 const App = () => {
   const history = useHistory();
   const { search } = useLocation();
   const [value, setValue] = useState('');
-  const [searchResults, setSearchResults] = useState(initialState);
-  const [error, setError] = useState(false);
+  const [currentCategories, setCurrentCategories] = useState([]);
+  const [currentState, setCurrentState] = useState({ state: 'loading' });
 
   const searchItems = async (query) => {
+    setCurrentState({ state: 'loading' });
     try {
-      const data = await getItems(query);
-      if (data) {
-        setSearchResults(data);
+      const { items, categories } = await getItems(query);
+      if (items && items.length > 0) {
+        setCurrentState({ state: 'success', data: items });
+      } else {
+        setCurrentState({ state: 'error', data: 404 });
       }
+
+      setCurrentCategories(categories);
     } catch (err) {
-      setError(true);
+      console.log(err);
+      setCurrentState({ state: 'error', data: err });
+      setCurrentCategories([]);
     }
   };
 
@@ -54,17 +64,10 @@ const App = () => {
         <Search value={value} onChange={(event) => setValue(event.target.value)} onSubmit={onSubmit} />
       </header>
       <main className='main grid'>
-        <Breadcrumb categories={searchResults.categories} />
+        <Breadcrumb categories={currentCategories} />
         <Switch>
           <Route exact path='/items'>
-            {!error ? (
-              <ResultList results={searchResults.items} />
-            ) : (
-              <Message
-                title='Ha ocurrido un error'
-                message='Tenemos algunos problemas encontrando tu producto. Por favor intenta más tarde.'
-              />
-            )}
+            {getState(currentState)}
           </Route>
           <Route exact path='/items/:id' component={Details} />
           <Redirect to='/' />
