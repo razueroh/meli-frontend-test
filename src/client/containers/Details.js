@@ -5,9 +5,10 @@ import Product from '../components/Product';
 import { formatAmount, getCurrency, getDecimals } from '../utils/price';
 import getCondition from '../utils/condition';
 import Message from '../components/Message';
+import Loading from '../components/Loading';
 
 const component = {
-  loading: () => <h1>loading</h1>,
+  loading: () => <Loading />,
   error: (error) => <Message error={error} />,
   success: (product) => <Product product={product} />,
 };
@@ -38,6 +39,7 @@ const Details = () => {
           setCurrentState({ state: 'success', data: product });
         }
       } catch (err) {
+        console.log(err);
         setCurrentState({ state: 'error', data: err });
       }
     };
@@ -45,7 +47,7 @@ const Details = () => {
     getProductDetails(id);
   }, []);
 
-  return getState({ currentState });
+  return getState(currentState);
 };
 
 export default Details;

@@ -9,9 +9,10 @@ import Details from './Details';
 import '../assets/styles/containers/App.scss';
 import { getItems } from '../api/meli';
 import Message from '../components/Message';
+import Loading from '../components/Loading';
 
 const component = {
-  loading: () => <h1>loading</h1>,
+  loading: () => <Loading />,
   error: (error) => <Message error={error} />,
   success: (results) => <ResultList results={results} />,
 };
