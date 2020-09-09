@@ -10,21 +10,13 @@ const ResultList = ({ results }) => {
   return (
     <div className='results pos-2 width-10'>
       {results.map((result) => {
-        const {
-          id,
-          title,
-          price,
-          condition,
-          location,
-          picture: image,
-          free_shipping: isFreeShipping,
-        } = result;
+        const { id, title, price, condition, location, picture: thumbnail, free_shipping: isFreeShipping } = result;
 
         return (
           <Result
             key={`ml-result-${id}`}
             id={id}
-            image={image}
+            thumbnail={thumbnail}
             currency={getCurrency(price.currency)}
             value={formatAmount(price.amount)}
             title={title}

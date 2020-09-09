@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import freeShippingIcon from '../assets/static/shipping-icon.png';
 import '../assets/styles/components/Result.scss';
 
-const Result = ({ id, image, currency, value, title, condition, location, isFreeShipping }) => {
+const Result = ({ id, thumbnail, currency, value, title, condition, location, isFreeShipping }) => {
   return (
     <article className='result'>
       <Link to={`/items/${id}`} className='result__image-link'>
-        <img src={image} alt={title} className='result__thumbnail' />
+        <img src={thumbnail} alt={title} className='result__thumbnail' />
       </Link>
       <div className='result__details-wrapper'>
         <div className='result__price'>
@@ -29,7 +29,7 @@ const Result = ({ id, image, currency, value, title, condition, location, isFree
 
 Result.propTypes = {
   id: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
