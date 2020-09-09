@@ -9,7 +9,7 @@ const Result = ({ id, thumbnail, currency, value, title, condition, location, is
   return (
     <article className='result'>
       <Link to={`/items/${id}`} className='result__image-link'>
-        <img src={thumbnail} alt={title} className='result__thumbnail' />
+        <img src={thumbnail} alt={title} loading='lazy' className='result__thumbnail' />
       </Link>
       <div className='result__details-wrapper'>
         <div className='result__price'>

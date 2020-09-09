@@ -8,7 +8,7 @@ const Product = ({ product }) => {
 
   return (
     <div className='product container pos-2 width-10'>
-      <img src={picture} alt={title} className='product__picture' />
+      <img src={picture} alt={title} loading='lazy' className='product__picture' />
       <div className='product__details'>
         <span className='product__condition'>{condition}</span>
         <span className='product__sold-quantity'>{`${soldQuantity} vendidos`}</span>
