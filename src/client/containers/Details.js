@@ -4,43 +4,50 @@ import { getItem } from '../api/meli';
 import Product from '../components/Product';
 import { formatAmount, getCurrency, getDecimals } from '../utils/price';
 import getCondition from '../utils/condition';
+import Message from '../components/Message';
+
+const component = {
+  loading: () => <h1>loading</h1>,
+  error: (error) => <Message error={error} />,
+  success: (product) => <Product product={product} />,
+};
+
+const getState = (state, data) => component[state](data);
 
 const Details = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState();
+  const [currentState, setCurrentState] = useState({ state: 'loading' });
 
   useEffect(() => {
-    const getProduct = async () => {
-      const { item } = await getItem(id);
+    const getProductDetails = async () => {
+      try {
+        setCurrentState({ state: 'loading' });
+        const { item } = await getItem(id);
+        if (item) {
+          const product = {
+            title: item.title,
+            currency: getCurrency(item.price.currency),
+            amount: formatAmount(item.price.amount),
+            decimals: getDecimals(item.price.decimals),
+            picture: item.picture,
+            condition: getCondition(item.condition),
+            soldQuantity: item.sold_quantity,
+            description: item.description,
+          };
 
-      if (item) {
-        setProduct({
-          title: item.title,
-          currency: getCurrency(item.price.currency),
-          amount: formatAmount(item.price.amount),
-          decimals: getDecimals(item.price.decimals),
-          picture: item.picture,
-          condition: getCondition(item.condition),
-          soldQuantity: item.sold_quantity,
-          description: item.description,
-        });
+          setCurrentState({ state: 'success', data: product });
+        }
+      } catch (err) {
+        setCurrentState({ state: 'error', data: err });
       }
     };
-    getProduct();
+
+    getProductDetails(id);
   }, []);
 
-  return product ? (
-    <Product
-      title={product.title}
-      currency={product.currency}
-      price={product.amount}
-      decimals={product.decimals}
-      picture={product.picture}
-      condition={product.condition}
-      soldQuantity={product.soldQuantity}
-      description={product.description}
-    />
-  ) : null;
+  const { state, data } = currentState;
+
+  return getState(state, data);
 };
 
 export default Details;
