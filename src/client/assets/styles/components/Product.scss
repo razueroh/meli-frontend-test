@@ -18,7 +18,7 @@
   &__details {
     grid-area: details;
     grid-column: 8 / span 3;
-    padding: $padding-32;
+    padding: $padding-32 $padding-32 $padding-32 0;
   }
 
   &__condition {
