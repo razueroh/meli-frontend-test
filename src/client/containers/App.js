@@ -28,6 +28,7 @@ const App = () => {
 
   const searchItems = async (query) => {
     setCurrentState({ state: 'loading' });
+    setCurrentCategories([]);
     try {
       const { items, categories } = await getItems(query);
       if (items && items.length > 0) {
@@ -36,7 +37,7 @@ const App = () => {
         setCurrentState({ state: 'error', data: 404 });
       }
 
-      setCurrentCategories(categories);
+      setCurrentCategories([...new Set(categories)]);
     } catch (err) {
       console.log(err);
       setCurrentState({ state: 'error', data: err });
