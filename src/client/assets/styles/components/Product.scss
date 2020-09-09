@@ -47,11 +47,12 @@
   }
 
   &__price-currency {
-    margin-right: 0.2em;
+    margin-right: 0.3em;
   }
 
   &__price-decimals {
     font-size: $font-size-24;
+    margin-left: 0.1em;
   }
 
   &__buy-button {
