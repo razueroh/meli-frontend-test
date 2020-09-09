@@ -3,7 +3,7 @@ const getStatus = (response) => {
     return Promise.resolve(response);
   }
 
-  return Promise.reject(new Error(response.statusText));
+  return Promise.reject(response.status);
 };
 
 const getJSON = (response) => response.json();
