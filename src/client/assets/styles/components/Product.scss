@@ -1,16 +1,12 @@
 @import '../Vars.scss';
 
 .product {
-  background-color: $white;
-  border-radius: $border-radius;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 1rem;
   grid-template-areas:
     'picture      details'
     'description  details';
-  margin-bottom: 100px;
-  padding: $padding-32;
 
   &__picture {
     grid-area: picture;
@@ -22,6 +18,7 @@
   &__details {
     grid-area: details;
     grid-column: 8 / span 3;
+    padding: $padding-32;
   }
 
   &__condition {
@@ -68,6 +65,7 @@
     grid-area: description;
     grid-column: 1 / span 7;
     white-space: pre-wrap;
+    padding: $padding-32;
   }
 
   &__description-header {
@@ -78,6 +76,6 @@
   &__description-content {
     color: $gray;
     font-size: $font-size-16;
-    margin: $margin-32 0;
+    margin-top: $margin-32;
   }
 }

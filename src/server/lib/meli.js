@@ -4,7 +4,7 @@ const { getCategory, getPrice } = require('../utils/helpers');
 
 const http = axios.create({
   baseURL: config.meliHost,
-  timeout: 3000,
+  timeout: 5000,
 });
 
 const jsonSign = {
@@ -30,7 +30,7 @@ const searchItems = async (query) => {
         amount,
         decimals,
       },
-      picture: item.thumbnail.replace(/-I/, '-V'),
+      picture: item.thumbnail,
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
       location: item.address.state_name,

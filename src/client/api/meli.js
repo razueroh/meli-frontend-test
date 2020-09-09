@@ -1,17 +1,23 @@
-import axios from 'axios';
+const getStatus = (response) => {
+  if (response.status >= 200 && response.status < 300) {
+    return Promise.resolve(response);
+  }
 
-const config = {
-  timeout: 3000,
+  return Promise.reject(new Error(response.statusText));
 };
 
-const http = axios.create(config);
+const getJSON = (response) => response.json();
 
-const getItems = (query) => {
-  return http.get(`/api/items?q=${encodeURIComponent(query)}`);
+const get = (url) => {
+  return fetch(url).then(getStatus).then(getJSON);
+};
+
+const getItems = async (query) => {
+  return get(`/api/items?q=${encodeURIComponent(query)}`);
 };
 
 const getItem = (id) => {
-  return http.get(`/api/items/${id}`);
+  return get(`/api/items/${id}`);
 };
 
 export { getItems, getItem };

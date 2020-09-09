@@ -41,4 +41,10 @@ if (config.dev) {
 itemsApi(app);
 renderApp(app);
 
+// error handler
+app.use((err, req, res, next) => {
+  const { name, message } = err;
+  res.status(500).json({ name, message });
+});
+
 app.listen(config.port, () => console.log(`Listening on http://localhost:${config.port}`));

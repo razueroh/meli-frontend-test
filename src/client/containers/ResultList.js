@@ -8,7 +8,7 @@ import getCondition from '../utils/condition';
 
 const ResultList = ({ results }) => {
   return (
-    <div className='results pos-2 width-10'>
+    <div className='results container pos-2 width-10'>
       {results.map((result) => {
         const { id, title, price, condition, location, picture: thumbnail, free_shipping: isFreeShipping } = result;
 

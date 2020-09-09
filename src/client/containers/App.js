@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch, useHistory, useLocation, Redirect } from 'react-router-dom';
 
 import Search from '../components/Search';
-import Header from '../components/Header';
-import Main from '../components/Main';
 import Breadcrumb from '../components/Breadcrumb';
 import ResultList from './ResultList';
 import Details from './Details';
 
 import '../assets/styles/containers/App.scss';
 import { getItems } from '../api/meli';
+import Message from '../components/Message';
 
 const initialState = {
   categories: [],
@@ -21,10 +20,17 @@ const App = () => {
   const { search } = useLocation();
   const [value, setValue] = useState('');
   const [searchResults, setSearchResults] = useState(initialState);
+  const [error, setError] = useState(false);
 
   const searchItems = async (query) => {
-    const { data } = await getItems(query);
-    setSearchResults(data);
+    try {
+      const data = await getItems(query);
+      if (data) {
+        setSearchResults(data);
+      }
+    } catch (err) {
+      setError(true);
+    }
   };
 
   const onSubmit = () => {
@@ -44,19 +50,26 @@ const App = () => {
 
   return (
     <>
-      <Header>
+      <header className='header'>
         <Search value={value} onChange={(event) => setValue(event.target.value)} onSubmit={onSubmit} />
-      </Header>
-      <Main>
+      </header>
+      <main className='main grid'>
         <Breadcrumb categories={searchResults.categories} />
         <Switch>
           <Route exact path='/items'>
-            <ResultList results={searchResults.items} />
+            {!error ? (
+              <ResultList results={searchResults.items} />
+            ) : (
+              <Message
+                title='Ha ocurrido un error'
+                message='Tenemos algunos problemas encontrando tu producto. Por favor intenta más tarde.'
+              />
+            )}
           </Route>
           <Route exact path='/items/:id' component={Details} />
           <Redirect to='/' />
         </Switch>
-      </Main>
+      </main>
     </>
   );
 };

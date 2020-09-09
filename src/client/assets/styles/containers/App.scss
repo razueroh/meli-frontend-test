@@ -55,3 +55,22 @@ a {
     grid-column-start: $i;
   }
 }
+
+/* elements */
+
+.header {
+  grid-area: header;
+  background-color: $yellow;
+}
+
+.main {
+  grid-area: main;
+  grid-template-rows: 46px auto;
+}
+
+.container {
+  background-color: $white;
+  border-radius: $border-radius;
+  margin-bottom: 100px;
+  overflow: hidden;
+}

@@ -10,7 +10,7 @@ const Breadcrumb = ({ categories }) => {
   return (
     <div className='breadcrumb pos-2 width-10'>
       {!isExact &&
-        categories.map((category, idx) => (
+        categories.map((category) => (
           <span key={category} className='breadcrumb__category'>
             {category}
           </span>
