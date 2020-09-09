@@ -15,9 +15,7 @@ const jsonSign = {
 };
 
 const searchItems = async (query) => {
-  const { data } = await http.get(
-    `sites/MLA/search?q=${encodeURIComponent(query)}&limit=${config.meliSearchLimit}`,
-  );
+  const { data } = await http.get(`sites/MLA/search?q=${encodeURIComponent(query)}&limit=${config.meliSearchLimit}`);
   const { results, filters } = data;
 
   const category = getCategory(filters);
@@ -32,7 +30,7 @@ const searchItems = async (query) => {
         amount,
         decimals,
       },
-      picture: item.thumbnail,
+      picture: item.thumbnail.replace(/-I/, '-V'),
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
       location: item.address.state_name,
