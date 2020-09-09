@@ -17,6 +17,7 @@ body {
   height: 100vh;
   color: $font-color;
   background-color: $light-gray;
+  overflow-y: scroll;
 }
 
 input,
