@@ -43,8 +43,12 @@ renderApp(app);
 
 // error handler
 app.use((err, req, res, next) => {
-  const { name, message } = err;
-  res.status(500).json({ name, message });
+  if (err && err.response) {
+    const { status, error, message } = err.response.data;
+    res.status(status).json({ status, error, message });
+  } else {
+    res.status(500).json({ status: 500, error: 'Internal Server Error', message: 'Unknown error' });
+  }
 });
 
 app.listen(config.port, () => console.log(`Listening on http://localhost:${config.port}`));
