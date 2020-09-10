@@ -43,13 +43,14 @@ For the purpose of the challenge the `.env` file is public but in production env
 
 ### Server
 
-- It renders the page content with server side rendering
+- It renders the page content with Server Side Rendering
 - Also, it has two endpoints and uses the Mercado Libre API for the product search and product details requests.
   - Endpoint for search: `/api/items?q=:query`
     - `https://api.mercadolibre.com/sites/MLA/search?q=:query`
   - Endpoint for product details: `/api/items/:id`
     - `https://api.mercadolibre.com/items/:id`
     - `https://api.mercadolibre.com/items/:id/description`
+    - `https://api.mercadolibre.com/categories/:category_id`
 
 ## Configuration
 
