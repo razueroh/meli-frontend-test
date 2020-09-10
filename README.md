@@ -11,8 +11,8 @@ This project is a proof of concept of the search page for Mercado Libre. It was 
 
 It also uses:
 
-- Rect hooks
-- Code splitting with webpack
+- React hooks
+- Code splitting with Webpack
 - BEM methodology for the naming convention of the components classes
 - CSS Grid and CSS Flexbox layouts
 - Airbnb Javascript Style Guide
@@ -20,16 +20,16 @@ It also uses:
 
 ### Disclaimer
 
-For the purpose of the challenge the `.env` file is public but in production environments that's not a good practice and could end in a lot of troubles.
+For the challenge the `.env` file is public but that's not a good practice and could end in a lot of troubles.
 
 ## Summary
 
 ### Views
 
 - The views are made for desktop
-- They use a 12 column grid layout for the components distribution
-- Colors, font sizes, paddings and margins where given in the specs of the challenge
-- The project has three views with their own routes:
+- They use a 12 column grid layout for the distribution of the components
+- Colors, font sizes, paddings, and margins were given in the specs of the challenge and are defined in `Vars.scss`
+- The project has three views with their routes:
   - **Search box:** `'/'`
   - **Result list:** `/items?search=`
   - **Product details:** `/items/:id`
