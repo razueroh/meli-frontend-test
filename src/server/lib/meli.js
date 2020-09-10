@@ -4,7 +4,7 @@ const { getCategory, getPrice } = require('../utils/helpers');
 
 const http = axios.create({
   baseURL: config.meliHost,
-  timeout: 3000,
+  timeout: 5000,
 });
 
 const jsonSign = {
@@ -15,9 +15,7 @@ const jsonSign = {
 };
 
 const searchItems = async (query) => {
-  const { data } = await http.get(
-    `sites/MLA/search?q=${encodeURIComponent(query)}&limit=${config.meliSearchLimit}`,
-  );
+  const { data } = await http.get(`sites/MLA/search?q=${encodeURIComponent(query)}&limit=${config.meliSearchLimit}`);
   const { results, filters } = data;
 
   const category = getCategory(filters);

@@ -1,0 +1,40 @@
+@import '../Vars.scss';
+
+@keyframes pulse {
+  0% {
+    background-color: $light-gray;
+  }
+  25% {
+    background-color: $gray;
+  }
+  50% {
+    background-color: $dark-gray;
+  }
+  100% {
+    background-color: $gray;
+  }
+}
+
+.loading {
+  height: 250px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  &__item {
+    height: 2em;
+    width: 2em;
+    border-radius: $border-radius;
+    margin: 0px 0.5em;
+  }
+
+  &__item:nth-child(1n) {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  &__item:nth-child(2n) {
+    animation: pulse 2s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+}
