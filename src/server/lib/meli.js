@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { config } = require('../config/index');
-const { getCategory, getPrice } = require('../utils/helpers');
+const { getCategory, getCategoriesPath, getPrice } = require('../utils/helpers');
 
 const http = axios.create({
   baseURL: config.meliHost,
@@ -16,9 +16,9 @@ const jsonSign = {
 
 const searchItems = async (query) => {
   const { data } = await http.get(`sites/MLA/search?q=${encodeURIComponent(query)}&limit=${config.meliSearchLimit}`);
-  const { results, filters } = data;
+  const { results, filters, available_filters: availableFilters } = data;
 
-  const category = getCategory(filters);
+  const categories = getCategory(filters, availableFilters);
 
   const items = (results || []).map((item) => {
     const [amount, decimals] = getPrice(item.price);
@@ -39,7 +39,7 @@ const searchItems = async (query) => {
 
   return {
     ...jsonSign,
-    categories: category,
+    categories,
     items,
   };
 };
@@ -49,11 +49,15 @@ const getItemData = async (id) => {
   const {
     data: { plain_text: description },
   } = await http.get(`/items/${id}/description`);
+  const {
+    data: { path_from_root: path },
+  } = await http.get(`/categories/${item.category_id}`);
 
   const [amount, decimals] = getPrice(item.price);
 
   return {
     ...jsonSign,
+    categories: getCategoriesPath(path),
     item: {
       id: item.id,
       title: item.title,

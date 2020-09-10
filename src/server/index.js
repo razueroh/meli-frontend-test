@@ -47,6 +47,7 @@ app.use((err, req, res, next) => {
     const { status, error, message } = err.response.data;
     res.status(status).json({ status, error, message });
   } else {
+    console.log(err);
     res.status(500).json({ status: 500, error: 'Internal Server Error', message: err.code });
   }
 });
