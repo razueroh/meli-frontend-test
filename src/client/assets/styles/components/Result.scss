@@ -39,12 +39,16 @@ $thumbnail-side-size: 180px;
   }
 
   &__free-shipping {
-    font-size: $font-size-18;
     margin-left: 12px;
   }
 
   &__description {
+    font-size: $font-size-18;
     margin-top: $margin-32;
+  }
+
+  &__condition {
+    font-size: $font-size-18;
   }
 
   &__location {
