@@ -28,7 +28,8 @@ For the purpose of the challenge the `.env` file is public but in production env
 
 - The views are made for desktop
 - They use a 12 column grid layout for the components distribution
-- It has three views with their own routes:
+- Colors, font sizes, paddings and margins where given in the specs of the challenge
+- The project has three views with their own routes:
   - **Search box:** `'/'`
   - **Result list:** `/items?search=`
   - **Product details:** `/items/:id`
@@ -77,6 +78,8 @@ Run the development server
 npm run dev
 ```
 
+Finally, open your browser in http://localhost:3000/
+
 ### Production
 
 Build the assets and start the production server
@@ -85,3 +88,5 @@ Build the assets and start the production server
 npm run build
 npm start
 ```
+
+Finally, open your browser in http://localhost:3000/
