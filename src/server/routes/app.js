@@ -7,7 +7,7 @@ const { FIVE_MINUTES_IN_SECONDS } = require('../utils/time');
 const routes = require('../../client/routes/serverRoutes').default;
 
 const setResponse = (html, manifest) => {
-  const favicon = manifest ? manifest['assets/logo-ml.png'] : 'assets/logo-ml.png';
+  const favicon = manifest ? manifest['assets/logo-ml.png'] : '/assets/logo-ml.png';
   const mainStyles = manifest ? manifest['main.css'] : '/assets/app.css';
   const mainBuild = manifest ? manifest['main.js'] : '/assets/app.js';
   const vendorsBuild = manifest ? manifest['vendors.js'] : '/assets/vendors.js';

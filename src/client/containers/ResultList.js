@@ -3,36 +3,12 @@ import PropTypes from 'prop-types';
 
 import Result from '../components/Result';
 import '../assets/styles/containers/ResultList.scss';
-import { getCurrency, formatAmount } from '../utils/price';
-import getCondition from '../utils/condition';
 
 const ResultList = ({ results }) => {
   return (
-    <div className='results pos-2 width-10'>
+    <div className='results container pos-2 width-10'>
       {results.map((result) => {
-        const {
-          id,
-          title,
-          price,
-          condition,
-          location,
-          picture: image,
-          free_shipping: isFreeShipping,
-        } = result;
-
-        return (
-          <Result
-            key={`ml-result-${id}`}
-            id={id}
-            image={image}
-            currency={getCurrency(price.currency)}
-            value={formatAmount(price.amount)}
-            title={title}
-            condition={getCondition(condition)}
-            location={location}
-            isFreeShipping={isFreeShipping}
-          />
-        );
+        return <Result key={`ml-result-${result.id}`} result={result} />;
       })}
     </div>
   );

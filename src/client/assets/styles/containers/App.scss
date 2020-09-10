@@ -17,6 +17,7 @@ body {
   height: 100vh;
   color: $font-color;
   background-color: $light-gray;
+  overflow-y: scroll;
 }
 
 input,
@@ -53,4 +54,23 @@ a {
   .pos-#{$i} {
     grid-column-start: $i;
   }
+}
+
+/* elements */
+
+.header {
+  grid-area: header;
+  background-color: $yellow;
+}
+
+.main {
+  grid-area: main;
+  grid-template-rows: 46px auto;
+}
+
+.container {
+  background-color: $white;
+  border-radius: $border-radius;
+  margin-bottom: 100px;
+  overflow: hidden;
 }
